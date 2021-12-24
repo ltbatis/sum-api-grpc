@@ -13,7 +13,7 @@ import (
 type server struct{}
 
 func (*server) Sum(ctx context.Context, req *sumpb.SumRequest) (*sumpb.SumResponse, error) {
-	fmt.Printf("Greet function was invoked with %v\n ", req)
+	fmt.Printf("Sum function was invoked with %v\n ", req)
 	first_number := req.GetSum().FirstNumber
 	second_number := req.GetSum().SecondNumber
 	result := first_number + second_number

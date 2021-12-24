@@ -44,5 +44,5 @@ func doUnary(c sumpb.SumServiceClient, one int, two int) {
 	if err != nil {
 		log.Fatalf("Error while calling Sum RPC: %v", err)
 	}
-	log.Printf("Response from Greet:  %v", res.Result)
+	log.Printf("Response from Sum:  %v", res.Result)
 }
