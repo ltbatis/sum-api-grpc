@@ -12,8 +12,7 @@ import (
 )
 
 func main() {
-	first_number_arg, _ := strconv.Atoi(os.Args[1])
-	second_number_arg, _ := strconv.Atoi(os.Args[2])
+	first_number_arg, second_number_arg := readArgs()
 
 	fmt.Println("Hello, I'm Sum The Client")
 	cc, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
@@ -25,6 +24,12 @@ func main() {
 
 	c := sumpb.NewSumServiceClient(cc)
 	doUnary(c, first_number_arg, second_number_arg)
+}
+
+func readArgs() (int, int) {
+	first_number_arg, _ := strconv.Atoi(os.Args[1])
+	second_number_arg, _ := strconv.Atoi(os.Args[2])
+	return first_number_arg, second_number_arg
 }
 
 func doUnary(c sumpb.SumServiceClient, one int, two int) {
